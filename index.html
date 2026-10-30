@@ -385,7 +385,7 @@ section,.band{background:var(--bg);color:var(--fg);position:relative}
 .ticket__stub::after{right:-12px;clip-path:inset(0 50% 0 0)}
 .admit{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .admit b{font-stretch:125%;font-weight:800;letter-spacing:.14em;font-size:.9rem}
-@media(max-width:999px){.sum{grid-template-columns:1fr 1fr;column-gap:18px}.sum div{flex-direction:column;gap:2px}.sum dd{text-align:left}.sum div:last-child{display:none}.ticket__stub{gap:8px}}
+@media(max-width:999px){.sum{grid-template-columns:1fr 1fr;column-gap:18px}.sum div{flex-direction:column;gap:2px}.ticket .sum dd{text-align:left}.sum div:last-child{display:none}.ticket__stub{gap:8px}}
 .sum{display:grid;gap:0}
 .sum div{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--rule)}
 .sum dt{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mut)}
@@ -394,7 +394,7 @@ section,.band{background:var(--bg);color:var(--fg);position:relative}
 .total b{font-stretch:125%;font-weight:300;font-size:2rem;line-height:1;white-space:nowrap}
 .stamp{position:absolute;z-index:3;right:20px;bottom:-18px;background:var(--card);padding:8px 12px;border:2px solid var(--green);color:var(--green);font-family:var(--mono);font-weight:500;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;transform:rotate(-12deg);display:none;pointer-events:none}
 .ticket.done .stamp{display:block;animation:stamp .55s cubic-bezier(.3,1.5,.5,1)}
-@keyframes stamp{from{opacity:0;transform:rotate(-12deg) scale(1.5)}}
+@keyframes stamp{from{opacity:0;transform:rotate(-12deg) scale(1.15)}}
 .fs legend{padding:0;margin-bottom:12px;display:flex;gap:10px;width:100%;justify-content:space-between}
 /* service chips */
 .chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:6px}
@@ -1084,9 +1084,9 @@ section,.band{background:var(--bg);color:var(--fg);position:relative}
     look.classList.toggle("pinned", want);
     $("#lookHint").textContent = want ? "Scroll ↓ to move →" : "Swipe →";
     if (want) {
-      track.style.transform = "";
       dist = Math.max(0, track.scrollWidth - window.innerWidth);
       look.style.height = (window.innerHeight + dist) + "px";
+      lookTick(window.innerHeight);
     } else { look.style.height = ""; track.style.transform = ""; }
   }
   function lookProgress(p) {
