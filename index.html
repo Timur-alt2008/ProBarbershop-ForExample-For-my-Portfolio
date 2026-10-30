@@ -62,7 +62,7 @@ section,.band{background:var(--bg);color:var(--fg);position:relative}
 /* =========================================================
    MASTHEAD (header) — takes the colours of the page under it
    ========================================================= */
-.mast{position:fixed;top:0;left:0;right:0;z-index:70;height:var(--hh);display:flex;align-items:center;justify-content:space-between;gap:12px;padding-inline:var(--gut);color:var(--fg);background:transparent;transition:background .35s,color .35s,border-color .35s;border-bottom:1px solid transparent}
+.mast{position:fixed;top:0;left:0;right:0;z-index:70;height:var(--hh);display:flex;align-items:center;justify-content:space-between;gap:12px;padding-inline:var(--gut);color:var(--fg);background:transparent;transition:background .2s,color .2s,border-color .2s;border-bottom:1px solid transparent}
 .mast.solid{background:var(--bg);border-bottom-color:var(--rule)}
 .brand{display:flex;align-items:baseline;gap:10px;text-decoration:none;min-height:44px;align-items:center}
 .brand b{font-stretch:125%;font-weight:800;font-size:1.15rem;letter-spacing:.06em}
@@ -269,6 +269,7 @@ section,.band{background:var(--bg);color:var(--fg);position:relative}
 .pan__hit .nm{font-stretch:62%;font-weight:800;text-transform:uppercase;font-size:2.4rem;line-height:1}
 .pan__hit .yr{font-family:var(--mono);font-size:.72rem;opacity:.7}
 .pan.on .pan__hit{align-items:flex-start;padding-top:16px}
+.pan.on .pan__hit .nm{opacity:0}
 .pan__body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:80px 16px 18px;color:var(--paper);background:linear-gradient(0deg,rgba(12,14,13,.92),rgba(12,14,13,0));display:grid;gap:8px;opacity:0;transform:translateY(24px);pointer-events:none;transition:opacity .4s,transform .7s var(--ease)}
 .pan.on .pan__body{opacity:1;transform:none;pointer-events:auto;transition-delay:.25s}
 .pan__body h3{font-stretch:62%;font-weight:800;text-transform:uppercase;font-size:clamp(3rem,8vw,5.5rem);line-height:.84}
@@ -320,7 +321,8 @@ section,.band{background:var(--bg);color:var(--fg);position:relative}
 @media(min-width:700px){.pl{width:46vw}.pl--w{width:62vw}.pl--s{width:36vw}}
 /* pinned version (set by JS on wide screens) */
 .look.pinned{padding:0}
-.look.pinned .look__pin{grid-template-columns:minmax(0,1fr);position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;grid-template-rows:auto 1fr auto;padding:calc(var(--hh) + 3vh) 0 4vh;gap:2vh}
+.look.pinned h2{font-size:clamp(2.6rem,5.2vw,4.8rem)}
+.look.pinned .look__pin{grid-template-rows:auto minmax(0,1fr) auto!important;grid-template-columns:minmax(0,1fr);position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;grid-template-rows:auto 1fr auto;padding:calc(var(--hh) + 3vh) 0 4vh;gap:2vh}
 .look.pinned .look__track{overflow:visible;width:max-content;height:100%;align-items:stretch;padding:0 var(--gut);gap:3.2vw;will-change:transform;scroll-snap-type:none}
 .look.pinned .pl{width:auto;height:100%;grid-template-rows:minmax(0,1fr) auto;align-content:start}
 .look.pinned .pl__btn{height:100%;width:auto}
@@ -328,8 +330,8 @@ section,.band{background:var(--bg);color:var(--fg);position:relative}
 .look.pinned .pl--w .pl__btn{height:64%}.look.pinned .pl--w.dn{align-content:end}
 .look.pinned .pl--s .pl__btn{height:46%}.look.pinned .pl--s.mid{align-content:center}
 .look.pinned .pl--w.dn,.look.pinned .pl--s.mid{grid-template-rows:auto auto}
-.look.pinned .pl--w.dn .pl__btn{height:auto;width:min(48vw,calc(58svh*4/3))}
-.look.pinned .pl--s.mid .pl__btn{height:auto;width:min(26vw,40svh)}
+.look.pinned .pl--w.dn .pl__btn{height:auto;width:min(44vw,calc(50svh*4/3))}
+.look.pinned .pl--s.mid .pl__btn{height:auto;width:min(24vw,34svh)}
 .look.pinned .look__q{width:min(30vw,520px);font-size:clamp(3rem,5.4vw,6rem)}
 
 /* =========================================================
@@ -339,6 +341,7 @@ section,.band{background:var(--bg);color:var(--fg);position:relative}
 .space__pin{position:relative;height:88svh;min-height:520px;overflow:hidden}
 .space__win{position:absolute;inset:0;--c:0;clip-path:inset(calc(var(--c)*var(--iy,12%)) calc(var(--c)*var(--ix,8%)))}
 .space__win img{transform:scale(calc(1 + var(--c)*.18));filter:grayscale(1) contrast(1.05) brightness(.62)}
+.space__shade{position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(0deg,rgba(10,39,29,.92) 0%,rgba(10,39,29,.55) 34%,rgba(10,39,29,0) 62%);opacity:var(--cap,1)}
 .space__cap{position:absolute;left:var(--gut);right:var(--gut);bottom:clamp(24px,5vw,60px);z-index:2;display:grid;gap:18px;transition:opacity .6s,transform .8s var(--ease)}
 .space.pin .space__cap{opacity:var(--cap,1);transform:translateY(calc((1 - var(--cap,1))*30px))}
 .space h2{font-size:clamp(3.4rem,12vw,9rem)}
@@ -371,6 +374,7 @@ section,.band{background:var(--bg);color:var(--fg);position:relative}
 .book h2{font-size:clamp(4rem,16vw,9.5rem)}
 .book h2 .it{font-size:.86em;color:var(--green)}
 .book__intro>p{font-family:var(--serif);font-size:1.35rem;line-height:1.2;max-width:28ch}
+.book__intro>p.demo{font-family:var(--mono);font-size:.72rem;line-height:1.5}
 .demo{display:flex;gap:10px;align-items:flex-start;max-width:40ch;padding:12px 0;border-block:1px solid var(--rule)}
 .demo i{flex:none;width:8px;height:8px;margin-top:5px;background:var(--green)}
 .ticket{position:relative;display:grid;background:var(--card);border:1px solid var(--ink);min-width:0}
@@ -381,18 +385,19 @@ section,.band{background:var(--bg);color:var(--fg);position:relative}
 .ticket__stub::after{right:-12px;clip-path:inset(0 50% 0 0)}
 .admit{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .admit b{font-stretch:125%;font-weight:800;letter-spacing:.14em;font-size:.9rem}
+@media(max-width:999px){.sum{grid-template-columns:1fr 1fr;column-gap:18px}.sum div{flex-direction:column;gap:2px}.sum dd{text-align:left}.sum div:last-child{display:none}.ticket__stub{gap:8px}}
 .sum{display:grid;gap:0}
 .sum div{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-bottom:1px solid var(--rule)}
 .sum dt{font-family:var(--mono);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;color:var(--mut)}
 .sum dd{font-weight:600;font-stretch:90%;text-align:right;overflow-wrap:anywhere}
 .total{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-.total b{font-stretch:125%;font-weight:300;font-size:2.6rem;line-height:1}
-.stamp{position:absolute;right:16px;top:58%;padding:8px 12px;border:2px solid var(--green);color:var(--green);font-family:var(--mono);font-weight:500;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;transform:rotate(-12deg);display:none;pointer-events:none}
+.total b{font-stretch:125%;font-weight:300;font-size:2rem;line-height:1;white-space:nowrap}
+.stamp{position:absolute;z-index:3;right:20px;bottom:-18px;background:var(--card);padding:8px 12px;border:2px solid var(--green);color:var(--green);font-family:var(--mono);font-weight:500;font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;transform:rotate(-12deg);display:none;pointer-events:none}
 .ticket.done .stamp{display:block;animation:stamp .55s cubic-bezier(.3,1.5,.5,1)}
 @keyframes stamp{from{opacity:0;transform:rotate(-12deg) scale(1.5)}}
 .fs legend{padding:0;margin-bottom:12px;display:flex;gap:10px;width:100%;justify-content:space-between}
 /* service chips */
-.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:6px}
+.chips{display:grid;grid-template-columns:repeat(auto-fill,minmax(128px,1fr));gap:6px}
 .chip{position:relative;display:block}
 .chip input,.who input,.slot input{position:absolute;opacity:0;width:1px;height:1px}
 .chip span{display:flex;justify-content:space-between;align-items:baseline;gap:8px;min-height:48px;padding:12px;border:1px solid var(--rule);font-stretch:85%;font-weight:600;font-size:.95rem;line-height:1.1;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
@@ -449,7 +454,7 @@ section,.band{background:var(--bg);color:var(--fg);position:relative}
   .ticket__stub::after{bottom:-12px;top:auto;clip-path:inset(0 0 50% 0)}
   .ticket__stub{padding-right:52px}
   .admit{writing-mode:vertical-rl;position:absolute;right:14px;top:22px;bottom:22px}
-  .stamp{top:auto;bottom:110px;right:20px}
+  .stamp{bottom:auto;right:auto;left:-64px;top:42%}
 }
 
 /* =========================================================
@@ -586,7 +591,7 @@ section,.band{background:var(--bg);color:var(--fg);position:relative}
     <figure class="cover__ph ph rv-clip" style="--d:.2s" data-img="cover"></figure>
     <span class="cover__side lbl mut" aria-hidden="true">Barber atelier — independent since 2026 — Evergreen</span>
     <a class="sticker" href="#booking" aria-label="Book a chair">
-      <svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text><textPath href="#circ">Book a chair · Book a chair · Book a chair ·</textPath></text></svg>
+      <svg class="ring" viewBox="0 0 100 100" aria-hidden="true"><defs><path id="circ" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text><textPath href="#circ" textLength="236" lengthAdjust="spacing">Book a chair · Book a chair ·</textPath></text></svg>
       <svg class="ico ar" aria-hidden="true"><use href="#i-ne"/></svg>
     </a>
   </div>
@@ -673,6 +678,7 @@ section,.band{background:var(--bg);color:var(--fg);position:relative}
   <div class="space__wrap" id="spaceWrap">
     <div class="space__pin">
       <div class="space__win ph" id="win" data-img="space"></div>
+      <div class="space__shade" id="spaceShade"></div>
       <span class="space__tag lbl" aria-hidden="true">06 — The space</span>
       <div class="space__cap" id="spaceCap">
         <h2 class="cond">A room <span class="it">with rules.</span></h2>
@@ -982,9 +988,9 @@ section,.band{background:var(--bg);color:var(--fg);position:relative}
       es.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
     }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
     $$(".ln,.rv-clip,.rv-up,.rv-rule,.rv-side").forEach(function (el) { io.observe(el); });
-    setTimeout(function () { $$(".ln,.rv-clip,.rv-up,.rv-rule,.rv-side").forEach(function (el) { el.classList.add("in"); }); }, 6000);
+    setTimeout(function () { $$(".ln,.rv-clip,.rv-up,.rv-rule,.rv-side").forEach(function (el) { el.classList.add("in"); }); }, 3500);
     /* the cover animates right away */
-    requestAnimationFrame(function () { $$("#cover .ln, #cover .rv-clip").forEach(function (el) { el.classList.add("in"); }); });
+    setTimeout(function () { $$("#cover .ln, #cover .rv-clip").forEach(function (el) { el.classList.add("in"); }); }, 40);
   }
 
   /* ===== COUNT-UP ===== */
@@ -1110,7 +1116,7 @@ section,.band{background:var(--bg);color:var(--fg);position:relative}
     var p = clamp(-r.top / Math.max(1, r.height - vh), 0, 1);
     var c = 1 - clamp(p / 0.6, 0, 1);
     win.style.setProperty("--c", (c * c).toFixed(3));
-    cap.style.setProperty("--cap", clamp((p - 0.45) / 0.25, 0, 1).toFixed(3));
+    var cv = clamp((p - 0.45) / 0.25, 0, 1).toFixed(3); cap.style.setProperty("--cap", cv); $("#spaceShade").style.setProperty("--cap", cv);
   }
 
   /* ===== MASTHEAD: colours, solid state, current section ===== */
